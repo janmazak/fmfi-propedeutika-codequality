@@ -11,6 +11,7 @@ Before delving into any coding, study the code and its original purpose and devi
   * try to generalize to a reasonable extent (e.g. let the user of your class do arbitrary operations instead of just string concatenation);
   * maintain appropriate amounts of comments in the code --- commenting every other line indicates you have named elements in your code wrong; well-written code is mostly self-explanatory.
 
+
 #### You are supposed to:
   * Learn about Git and GitHub
     - https://guides.github.com/introduction/git-handbook/
@@ -21,7 +22,7 @@ Before delving into any coding, study the code and its original purpose and devi
   * Your new code should include at least a couple of simple tests (e.g. in a static method in the classes you create).
   * Learn a bit of [Markdown](https://www.markdownguide.org/basic-syntax) and add into [README.md](README.md) brief instructions on how to run/test your program.
   * Prepare a pull request (PR) against the original repository, with [`janmazak`](https://github.com/janmazak) set as a reviewer.
-  * The PR should contain a description of the changes and a concise explanation of why you want to make them.
+  * The PR description should contain a list of the changes you made and a concise explanation of why you want to make them.
   * Fix your code according to the comments on the PR and get it approved eventually.
 
 When organizing the commits in the PR:
@@ -40,6 +41,7 @@ Not required, but extremely useful to know about:
 
 It is reasonable to spend altogether at least 4-6 hours on this task.
 
+
 ### How to rewrite an existing program
 
 * Before doing any large refactors, you should minimize the risks of breaking something accidentally.
@@ -52,6 +54,6 @@ It is reasonable to spend altogether at least 4-6 hours on this task.
 * Spend some time on identifying and removing redundant code.
 * Try to avoid huge all-encompassing changes that will break most existing tests.
 * Don't add new features until refactoring is complete.
-* Avoid messy commit history if possible. It is not necessary that the program is functional after each commit, but it should at least be compilable without errors, and it should be properly formatted (not complying with this is a potentially endless source of future annoyance and wasted time). For instance, splitting the renaming of a function into two different commits almost never makes sense.
+* Avoid messy commit history if possible. It is not necessary that the program is functional after each commit, but it should at least be compilable without errors, and it should be properly formatted (not complying with this is a potentially endless source of future annoyance and wasted time). For instance, splitting the renaming of a function into two different commits rarely makes sense.
 
 
