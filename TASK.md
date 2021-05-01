@@ -9,7 +9,7 @@ Before delving into any coding, study the code and its original purpose and devi
   * improved [testability](https://www.toptal.com/qa/how-to-write-testable-code-and-why-it-matters);
   * prefer [pure functions](https://blog.knoldus.com/functional-java-understanding-pure-functions-with-java/) without side effects;
   * try to generalize to a reasonable extent (e.g. let the user of your class do arbitrary operations instead of just string concatenation);
-  * maintain appropriate amounts of comments in the code --- commenting every other line indicates you have named elements in your code wrong; well-written code is mostly self-explanatory.
+  * maintain appropriate amounts of [comments in the code](https://google.github.io/styleguide/cppguide.html#Comments) --- commenting every other line indicates you have named elements in your code wrong; well-written code is mostly self-explanatory.
 
 
 #### You are supposed to:
