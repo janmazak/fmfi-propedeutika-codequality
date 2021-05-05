@@ -6,6 +6,7 @@ public class ConcatenateMatrices {
     public static void main(String[] args) throws IOException {
 
         Scanner scanner = new Scanner(new FileInputStream("vstup.txt")); // nacitanie vstupu
+        PrintStream output = new PrintStream("vystup.txt"); // vystupny subor
         int m = scanner.nextInt();
         int n = scanner.nextInt();
 
@@ -26,9 +27,10 @@ public class ConcatenateMatrices {
 
         for (int i = 0; i < m; i++) { //formatovany vystup vyslednej matice
             for (int j = 0; j < n; j++) {
-                System.out.printf("[%d,%d]: %s\n", i, j, matrix[i][j]);
+                output.printf("[%d,%d]: %s\n", i, j, matrix[i][j]);
             }
         }
+        output.close();
         scanner.close();
     }
 }
