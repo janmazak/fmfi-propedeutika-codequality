@@ -5,14 +5,11 @@ public class ConcatenateMatrices {
 
     public static void main(String[] args) throws IOException {
 
-        Scanner scanner = new Scanner(new FileInputStream("vstup.txt"));
+        Scanner scanner = new Scanner(new FileInputStream("vstup.txt")); // nacitanie vstupu
         int m = scanner.nextInt();
         int n = scanner.nextInt();
 
-        String[][] matrix = new String[m][]; //matica a jej vynulovanie
-        for (int k = 0; k < m; k++) {
-            matrix[k] = new String[n];
-        }
+        String[][] matrix = new String[m][n]; // vyroba matice
         for (int i = 0; i < m; i++) {
             for (int j = 0; j < n; j++) {
                 matrix[i][j] = "";
