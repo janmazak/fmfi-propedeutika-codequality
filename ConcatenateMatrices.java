@@ -4,12 +4,10 @@ import java.io.*;
 public class ConcatenateMatrices {
 
     public static void main(String[] args) throws IOException {
-        Scanner scanner = new Scanner(new File("vstup.txt"));
-        PrintStream output = new PrintStream("vystup.txt");
-        String vstup = scanner.nextLine(); //prvy riadok (velmi pravdepodobne ide nakodit lahsie)
-        String[] rozmery = vstup.split(" ");
-        int m = Integer.parseInt(rozmery[0]);
-        int n = Integer.parseInt(rozmery[1]);
+
+        Scanner scanner = new Scanner(new FileInputStream("vstup.txt"));
+        int m = scanner.nextInt();
+        int n = scanner.nextInt();
 
         String[][] matrix = new String[m][]; //matica a jej vynulovanie
         for (int k = 0; k < m; k++) {
@@ -31,7 +29,7 @@ public class ConcatenateMatrices {
         }
         for (int i = 0; i < m; i++) { //formatovany vystup vyslednej matice
             for (int j = 0; j < n; j++) {
-                output.printf("[%d,%d]: %s\n", i, j, matrix[i][j]);
+                System.out.printf("[%d,%d]: %s\n", i, j, matrix[i][j]);
             }
         }
         scanner.close();
