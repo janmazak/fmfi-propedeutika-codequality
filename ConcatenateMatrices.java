@@ -1,11 +1,32 @@
 import java.util.*;
 import java.io.*;
 
+/* test github
+ */
+
 public class ConcatenateMatrices {
 
     public static void main(String[] args) throws IOException {
         Scanner scanner = new Scanner(new File("vstup.txt"));
         PrintStream output = new PrintStream("vystup.txt");
+
+        Matrix<String> matrix = new Matrix<>(scanner);
+
+        while(scanner.hasNext()){
+            Matrix<String> pomMatrix = new Matrix<>(matrix.getRows(), matrix.getColumns(), scanner);
+            matrix.operation(pomMatrix, ((x, y) -> x + y));
+        }
+
+        Print<String> print = new Print<>(matrix);
+        print.print(output);
+
+        scanner.close();
+        output.close();
+
+        /*
+
+
+
         String vstup = scanner.nextLine(); //prvy riadok (velmi pravdepodobne ide nakodit lahsie)
         String[] rozmery = vstup.split(" ");
         int m = Integer.parseInt(rozmery[0]);
@@ -35,5 +56,9 @@ public class ConcatenateMatrices {
             }
         }
         scanner.close();
+
+         */
     }
+
+
 }
