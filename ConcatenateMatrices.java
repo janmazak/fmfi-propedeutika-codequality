@@ -10,8 +10,6 @@ public class ConcatenateMatrices {
         int m = scanner.nextInt();
         int n = scanner.nextInt();
 
-        System.out.println(areDimensionsSet(m, n));
-
         String[][] matrix = new String[m][n]; // vyroba prazdnej matice
         for (int i = 0; i < m; i++) {
             for (int j = 0; j < n; j++) {
@@ -25,9 +23,7 @@ public class ConcatenateMatrices {
                     matrix[i][j] += scanner.next();
                 }
             }
-        }
-
-        System.out.println(isMatrixFilled(m, n, matrix));   
+        } 
 
         for (int i = 0; i < m; i++) { //formatovany vystup vyslednej matice
             for (int j = 0; j < n; j++) {
