@@ -1,6 +1,7 @@
 import java.io.FileNotFoundException;
 import java.io.PrintStream;
 import java.util.LinkedList;
+import java.util.List;
 
 public class Print<T> {
     private LinkedList<LinkedList<T>> matrix;
@@ -20,22 +21,31 @@ public class Print<T> {
         }
     }
 
+
+    public void print(PrintStream printStream){
+        for (int i = 0; i < rows; i++){
+            for (int k = 0; k < columns; k++){
+                printStream.println("[" + i + "," + k + "]: " +  matrix.get(i).get(k));
+            }
+        }
+    }
+
+
     public void printToFile(String file) throws FileNotFoundException {
         PrintStream output = new PrintStream(file);
         for (int i = 0; i < rows; i++){
             for (int k = 0; k < columns; k++){
                 output.printf("[" + i + "," + k + "]: " +  matrix.get(i).get(k));
             }
+
         }
         output.close();
     }
 
     public void printToTerminal(){
-        for (int i = 0; i < rows; i++){
-            for (int k = 0; k < columns; k++){
-                System.out.printf("[" + i + "," + k + "]: " +  matrix.get(i).get(k));
-            }
-        }
+        print(System.out);
     }
+
+
 
 }

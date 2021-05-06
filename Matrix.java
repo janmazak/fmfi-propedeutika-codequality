@@ -1,9 +1,11 @@
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.PrintStream;
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Scanner;
+import java.util.function.BinaryOperator;
 
 public class Matrix<T> {
 
@@ -11,44 +13,22 @@ public class Matrix<T> {
     private int columns;
     private LinkedList<LinkedList<T>> matrix;
 
-    //konštruktor na nacitavanie matice z konzoly
+
     public Matrix(int rows, int columns, Scanner scanner) throws FileNotFoundException {
         // Scanner scanner = new Scanner(System.in);
         this.rows = rows;
         this.columns = columns;
-        matrix = new LinkedList<>();
+        readMatrix(scanner);
 
-        for (int i = 0; i < this.rows; i++){
-            matrix.add(new LinkedList<>());
-            for (int k = 0; k < this.columns; k++){
-                matrix.get(i).add(k, (T) scanner.next());
-            }
-        }
-
-        scanner.close();
     }
 
-    //konstruktor na nacitavanie matice zo suboru
-    /*
-    public Matrix(String file, int rows, int columns) throws FileNotFoundException {
+    public Matrix(Scanner scanner) throws FileNotFoundException {
+        // Scanner scanner = new Scanner(System.in);
+        this.rows = scanner.nextInt();
+        this.columns = scanner.nextInt();
+        readMatrix(scanner);
 
-        Scanner scanner = new Scanner(new File(file));
-        this.rows = rows;
-        this.columns = columns;
-        matrix = new LinkedList<>();
-
-        for (int i = 0; i < this.rows; i++){
-            matrix.add(new LinkedList<>());
-            for (int k = 0; k < this.columns; k++){
-                matrix.get(i).add(k, (T) scanner.next());
-            }
-        }
-
-        scanner.close();
     }
-
-     */
-
 
     public Matrix(List<List<T>> matrix){
         this.matrix = new LinkedList<>();
@@ -63,6 +43,18 @@ public class Matrix<T> {
 
     }
 
+    private void readMatrix(Scanner scanner){
+        matrix = new LinkedList<>();
+
+        for (int i = 0; i < this.rows; i++){
+            matrix.add(new LinkedList<>());
+            for (int k = 0; k < this.columns; k++){
+                matrix.get(i).add(k, (T) scanner.next());
+            }
+        }
+    }
+
+
     public int getColumns() {
         return columns;
     }
@@ -74,6 +66,26 @@ public class Matrix<T> {
     public T getItem (int row, int column){
         return this.matrix.get(row).get(column);
     }
+
+    public void operation(Matrix<T> matrix, BinaryOperator<T> binOp){
+        if (this.rows != matrix.getRows()) throw new IllegalArgumentException();
+        if (this.columns != matrix.getColumns()) throw new IllegalArgumentException();
+
+        //LinkedList<List<T>> resultMatrix = new LinkedList<>();
+
+        for (int i = 0; i < rows; i++){
+            //resultMatrix.add(new LinkedList<>());
+
+            for (int k = 0; k < columns; k++){
+                T pom = binOp.apply(this.matrix.get(i).get(k), matrix.getItem(i, k));
+                this.matrix.get(i).set(k, pom);
+            }
+        }
+
+
+
+    }
+
 
 }
 
