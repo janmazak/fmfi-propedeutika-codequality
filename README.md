@@ -6,3 +6,4 @@ trieda umožňuje tlačiť obsah zapúzdrených inštancií triedy Matrix.java.
 
 # Použitie
 príklad na použitie tried je zrejmý zo súboru **ConcatenateMatrices.java**.
+

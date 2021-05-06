@@ -71,10 +71,7 @@ public class Matrix<T> {
         if (this.rows != matrix.getRows()) throw new IllegalArgumentException();
         if (this.columns != matrix.getColumns()) throw new IllegalArgumentException();
 
-        //LinkedList<List<T>> resultMatrix = new LinkedList<>();
-
         for (int i = 0; i < rows; i++){
-            //resultMatrix.add(new LinkedList<>());
 
             for (int k = 0; k < columns; k++){
                 T pom = binOp.apply(this.matrix.get(i).get(k), matrix.getItem(i, k));
