@@ -12,9 +12,9 @@ The output will be in textfile named vystup.txt.
 You can test if m, n are valid integers; bigger than zero. Put "System.out.println(areDimensionsSet(m, n));" in the code right after initialization of m,n. If they are, you will see "true" in the terminal.
 
 Example:
+
     Scanner scanner = new Scanner(new FileInputStream("vstup.txt")); // nacitanie vstupu
     PrintStream output = new PrintStream("vystup.txt"); // vystupny subor
-    int m = scanner.nextInt();
     int n = scanner.nextInt();
 
     System.out.println(areDimensionsSet(m, n));
@@ -22,13 +22,14 @@ Example:
 After filling of matrix you can put "System.out.println(isMatrixFilled(m, n, matrix));". If there's no empty string in the matrix, it will also print "true" in the terminal.
 
 Example:
+
     while (scanner.hasNext()) { // kym je cim, plni sa matica
-            for (int i = 0; i < m; i++) {
-                for (int j = 0; j < n; j++) {
-                    matrix[i][j] += scanner.next();
-                }
-            }
-        }
+    for (int i = 0; i < m; i++) {
+    for (int j = 0; j < n; j++) {
+    matrix[i][j] += scanner.next();
+    }
+    }
+    }
 
     System.out.println(isMatrixFilled(m, n, matrix));
 
