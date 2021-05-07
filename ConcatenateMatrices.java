@@ -11,10 +11,7 @@ public class ConcatenateMatrices {
         int m = Integer.parseInt(rozmery[0]);
         int n = Integer.parseInt(rozmery[1]);
 
-        String[][] matrix = new String[m][]; //matica a jej vynulovanie
-        for (int k = 0; k < m; k++) {
-            matrix[k] = new String[n];
-        }
+        String[][] matrix = new String[m][n]; //matica a jej vynulovanie
         for (int i = 0; i < m; i++) {
             for (int j = 0; j < n; j++) {
                 matrix[i][j] = "";
