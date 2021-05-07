@@ -6,10 +6,9 @@ public class ConcatenateMatrices {
     public static void main(String[] args) throws IOException {
         Scanner scanner = new Scanner(new File("vstup.txt"));
         PrintStream output = new PrintStream("vystup.txt");
-        String vstup = scanner.nextLine(); //prvy riadok (velmi pravdepodobne ide nakodit lahsie)
-        String[] rozmery = vstup.split(" ");
-        int m = Integer.parseInt(rozmery[0]);
-        int n = Integer.parseInt(rozmery[1]);
+
+        int m = scanner.nextInt();
+        int n = scanner.nextInt();
 
         String[][] matrix = new String[m][n]; //matica a jej vynulovanie
         for (int i = 0; i < m; i++) {
