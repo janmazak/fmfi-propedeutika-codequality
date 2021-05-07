@@ -3,37 +3,45 @@ import java.io.*;
 
 public class ConcatenateMatrices {
 
-    public static void main(String[] args) throws IOException {
-        Scanner scanner = new Scanner(new File("vstup.txt"));
-        PrintStream output = new PrintStream("vystup.txt");
-        String vstup = scanner.nextLine(); //prvy riadok (velmi pravdepodobne ide nakodit lahsie)
-        String[] rozmery = vstup.split(" ");
-        int m = Integer.parseInt(rozmery[0]);
-        int n = Integer.parseInt(rozmery[1]);
 
-        String[][] matrix = new String[m][]; //matica a jej vynulovanie
-        for (int k = 0; k < m; k++) {
-            matrix[k] = new String[n];
-        }
-        for (int i = 0; i < m; i++) {
-            for (int j = 0; j < n; j++) {
-                matrix[i][j] = "";
+    public static void main(String[] args) throws IOException {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Zadajte názov vstupného súboru:");
+        String inputFileName = scanner.nextLine();
+        System.out.println("Zadajte názov výstupného súboru:");
+        String outputFileName = scanner.nextLine();
+        Scanner input = new Scanner(new File(inputFileName));
+
+
+        int m = input.nextInt(), n = input.nextInt();
+        input.nextLine();
+
+        Matrix matrix = new Matrix(m, n);
+
+        // TODO what to do with exceptions
+        while (input.hasNext()) {
+            Matrix nextMatrix = null;
+            // reading next matrix from input file
+            try {
+                nextMatrix = Matrix.readMatrix(input, m, n);
+            } catch (IllegalInputException e) {
+                System.out.println(e.getMessage());
+                break;
+            }
+
+            // adding successfully read matrix to the result matrix
+            try {
+                matrix.addMatrix(nextMatrix);
+            } catch (IllegalArgumentException e) {
+                System.out.println("Matice nie sú rovnakého typu");
+                break;
             }
         }
-        while (scanner.hasNextLine()) { //cita pokial nenarazi na koniec (neexistujuci prvy riadok matice)
-            for (int i = 0; i < m; i++) { //ak je dalsi riadok, tak urcite bude m-riadkov matice
-                String riadok = scanner.nextLine(); //jeden riadok matice
-                String[] prvky = riadok.split(" "); //rozdelenie riadku na prvky (stlpce)
-                for (int j = 0; j < n; j++) { //prvky_length = n
-                    matrix[i][j] += prvky[j]; //pricitanie do vyslednej matice
-                }
-            }
-        }
-        for (int i = 0; i < m; i++) { //formatovany vystup vyslednej matice
-            for (int j = 0; j < n; j++) {
-                output.printf("[%d,%d]: %s\n", i, j, matrix[i][j]);
-            }
-        }
-        scanner.close();
+
+        PrintStream output = new PrintStream(outputFileName);
+        output.print(matrix);
+        
+        input.close();
+        output.close();
     }
 }
