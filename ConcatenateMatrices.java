@@ -39,11 +39,8 @@ public class ConcatenateMatrices {
         }
 
         PrintStream output = new PrintStream(outputFileName);
-        for (int i = 0; i < m; i++) { //formatovany vystup vyslednej matice
-            for (int j = 0; j < n; j++) {
-                output.printf("[%d,%d]: %s\n", i, j, matrix.get(i, j));
-            }
-        }
+        output.print(matrix);
+        
         input.close();
         output.close();
     }

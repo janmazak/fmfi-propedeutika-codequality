@@ -15,7 +15,7 @@ public class Matrix {
         }
     }
 
-    // try to read matrix of m rows and n columns
+    // tries to read matrix of m rows and n columns
     public static Matrix readMatrix(Scanner scanner, int m, int n) throws IllegalInputException {
         Matrix matrix = new Matrix(m, n);
         for (int i = 0; i < m; i++) {
@@ -36,6 +36,7 @@ public class Matrix {
         matrix[row][col] += value;
     }
 
+    // adds matrix of the same type by elements
     public void addMatrix(Matrix matrix) {
         if (numOfRows != matrix.numOfRows || numOfColumns != matrix.numOfColumns) {
             throw new IllegalArgumentException();
@@ -47,7 +48,7 @@ public class Matrix {
         }
     }
 
-    public String get(int row, int col) {
+    private String get(int row, int col) {
         return matrix[row][col];
     }
 
@@ -55,16 +56,15 @@ public class Matrix {
         matrix[row][col] = value;
     }
 
+    // returns matrix in required string format
     @Override
     public String toString() {
-        String result = "";
-        for (String[] row : matrix) {
-            for (String col : row) {
-                result += col;
-                result += " ";
+        StringBuilder result = new StringBuilder("");
+        for (int row = 0; row < numOfRows; row++) {
+            for (int col = 0; col < numOfColumns; col++) {
+                result.append("[" + row + "," + col + "]: " + get(row, col) + "\n");
             }
-            result += "\n";
         }
-        return result;
+        return result.toString();
     }
 }
