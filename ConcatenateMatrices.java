@@ -6,10 +6,10 @@ public class ConcatenateMatrices {
     public static void main(String[] args) throws IOException {
         Scanner scanner = new Scanner(new File("vstup.txt"));
         PrintStream output = new PrintStream("vystup.txt");
-        String vstup = scanner.nextLine(); //prvy riadok (velmi pravdepodobne ide nakodit lahsie)
-        String[] rozmery = vstup.split(" ");
-        int m = Integer.parseInt(rozmery[0]);
-        int n = Integer.parseInt(rozmery[1]);
+        String input = scanner.nextLine(); //prvy riadok (velmi pravdepodobne ide nakodit lahsie)
+        String[] measurements = input.split(" ");
+        int m = Integer.parseInt(measurements[0]);
+        int n = Integer.parseInt(measurements[1]);
 
         String[][] matrix = new String[m][]; //matica a jej vynulovanie
         for (int k = 0; k < m; k++) {
@@ -22,10 +22,10 @@ public class ConcatenateMatrices {
         }
         while (scanner.hasNextLine()) { //cita pokial nenarazi na koniec (neexistujuci prvy riadok matice)
             for (int i = 0; i < m; i++) { //ak je dalsi riadok, tak urcite bude m-riadkov matice
-                String riadok = scanner.nextLine(); //jeden riadok matice
-                String[] prvky = riadok.split(" "); //rozdelenie riadku na prvky (stlpce)
+                String row = scanner.nextLine(); //jeden riadok matice
+                String[] columns = row.split(" "); //rozdelenie riadku na prvky (stlpce)
                 for (int j = 0; j < n; j++) { //prvky_length = n
-                    matrix[i][j] += prvky[j]; //pricitanie do vyslednej matice
+                    matrix[i][j] += columns[j]; //pricitanie do vyslednej matice
                 }
             }
         }
