@@ -15,16 +15,16 @@ public class Matrix {
         }
     }
 
-    // try to read matrix of m rows and n columns TODO: custom exceptions
-    public static Matrix readMatrix(Scanner scanner, int m, int n) {
+    // try to read matrix of m rows and n columns
+    public static Matrix readMatrix(Scanner scanner, int m, int n) throws IllegalInputException {
         Matrix matrix = new Matrix(m, n);
         for (int i = 0; i < m; i++) {
             String row = null;
             if (scanner.hasNextLine()) {
                 row = scanner.nextLine();
-            } else throw new NoSuchElementException();
+            } else throw new IllegalInputException();
             String[] columns = row.split(" ");
-            if (columns.length != n) throw new NoSuchElementException();
+            if (columns.length != n) throw new IllegalInputException();
             for (int j = 0; j < n; j++) {
                 matrix.set(i, j, columns[j]);
             }

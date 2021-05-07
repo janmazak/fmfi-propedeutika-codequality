@@ -24,8 +24,8 @@ public class ConcatenateMatrices {
             // reading next matrix from input file
             try {
                 nextMatrix = Matrix.readMatrix(input, m, n);
-            } catch (NoSuchElementException e) {
-                System.out.println("Nesprávne zadaná matica");
+            } catch (IllegalInputException e) {
+                System.out.println(e.getMessage());
                 break;
             }
 
