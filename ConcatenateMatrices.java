@@ -22,6 +22,7 @@ public class ConcatenateMatrices {
         try {
             m = scanner.nextInt();
             n = scanner.nextInt();
+            scanner.nextLine();
             if(m < 1 || n < 1) throw new IllegalArgumentException();
         }
         catch (Exception e){
