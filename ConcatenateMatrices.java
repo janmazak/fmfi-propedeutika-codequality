@@ -5,6 +5,10 @@ public class ConcatenateMatrices {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
 
+        //test1();
+        //test2();
+        //test3();
+        
         System.out.print("Zadajte počet riadkov a stĺpcov matice oddelené medzerou: ");
         String[] rozmery = scanner.nextLine().split(" ");
         int m = Integer.parseInt(rozmery[0]);
