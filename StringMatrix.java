@@ -24,6 +24,10 @@ public class StringMatrix {
      * @param columns Number of columns.
      */
     public StringMatrix(int rows, int columns) {
+        if (!(rows > 0 && columns > 0)) {
+            throw new IllegalArgumentException("Attempting to create a matrix with non-positive dimensions.");
+        }
+
         m = rows;
         n = columns;
 
