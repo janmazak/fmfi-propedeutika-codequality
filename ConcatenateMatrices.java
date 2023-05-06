@@ -35,5 +35,6 @@ public class ConcatenateMatrices {
             }
         }
         scanner.close();
+        output.close();
     }
 }
