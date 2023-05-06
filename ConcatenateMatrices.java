@@ -3,9 +3,14 @@ import java.io.*;
 
 public class ConcatenateMatrices {
 
+    private static final String INPUT_FILE_NAME = "vstup.txt";
+    private static final String OUPUT_FILE_NAME = "vystup.txt";
+
     public static void main(String[] args) throws IOException {
-        Scanner scanner = new Scanner(new File("vstup.txt"));
-        PrintStream output = new PrintStream("vystup.txt");
+
+        Scanner scanner = new Scanner(new File(INPUT_FILE_NAME));
+        PrintStream output = new PrintStream(OUPUT_FILE_NAME);
+
         String vstup = scanner.nextLine(); //prvy riadok (velmi pravdepodobne ide nakodit lahsie)
         String[] rozmery = vstup.split(" ");
         int m = Integer.parseInt(rozmery[0]);
