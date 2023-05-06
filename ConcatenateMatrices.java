@@ -11,10 +11,9 @@ public class ConcatenateMatrices {
         Scanner scanner = new Scanner(new File(INPUT_FILE_NAME));
         PrintStream output = new PrintStream(OUPUT_FILE_NAME);
 
-        String vstup = scanner.nextLine(); //prvy riadok (velmi pravdepodobne ide nakodit lahsie)
-        String[] rozmery = vstup.split(" ");
-        int m = Integer.parseInt(rozmery[0]);
-        int n = Integer.parseInt(rozmery[1]);
+        /* Dimensions of matrices */
+        int m = scanner.nextInt();
+        int n = scanner.nextInt();
 
         String[][] matrix = new String[m][]; //matica a jej vynulovanie
         for (int k = 0; k < m; k++) {
