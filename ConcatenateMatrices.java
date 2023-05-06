@@ -6,6 +6,10 @@ public class ConcatenateMatrices {
     private static final String INPUT_FILE_NAME = "vstup.txt";
     private static final String OUPUT_FILE_NAME = "vystup.txt";
 
+    /**
+     * @param args
+     * @throws IOException
+     */
     public static void main(String[] args) throws IOException {
 
         Scanner scanner = new Scanner(new File(INPUT_FILE_NAME));
@@ -15,30 +19,17 @@ public class ConcatenateMatrices {
         int m = scanner.nextInt();
         int n = scanner.nextInt();
 
-        String[][] matrix = new String[m][]; //matica a jej vynulovanie
-        for (int k = 0; k < m; k++) {
-            matrix[k] = new String[n];
+        StringMatrix matrix = new StringMatrix(m,n);
+
+        /* If there is an unread line in input file, it is expected to contain new matrix for concatenation. */
+        while (scanner.hasNextLine()) {
+            matrix.readMatrix(scanner, false);
         }
-        for (int i = 0; i < m; i++) {
-            for (int j = 0; j < n; j++) {
-                matrix[i][j] = "";
-            }
-        }
-        while (scanner.hasNextLine()) { //cita pokial nenarazi na koniec (neexistujuci prvy riadok matice)
-            for (int i = 0; i < m; i++) { //ak je dalsi riadok, tak urcite bude m-riadkov matice
-                String riadok = scanner.nextLine(); //jeden riadok matice
-                String[] prvky = riadok.split(" "); //rozdelenie riadku na prvky (stlpce)
-                for (int j = 0; j < n; j++) { //prvky_length = n
-                    matrix[i][j] += prvky[j]; //pricitanie do vyslednej matice
-                }
-            }
-        }
-        for (int i = 0; i < m; i++) { //formatovany vystup vyslednej matice
-            for (int j = 0; j < n; j++) {
-                output.printf("[%d,%d]: %s\n", i, j, matrix[i][j]);
-            }
-        }
+
         scanner.close();
+
+        matrix.printMatrix(output);
+
         output.close();
     }
 }
