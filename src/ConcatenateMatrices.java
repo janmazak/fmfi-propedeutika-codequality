@@ -3,29 +3,46 @@ import java.io.*;
 
 public class ConcatenateMatrices {
 
-    private static final String INPUT_FILE_NAME = "input.txt";
-    private static final String OUPUT_FILE_NAME = "output.txt";
+    private static final String DEFAULT_INPUT_FILE_NAME = "input.txt";
+    private static final String DEFAULT_OUPUT_FILE_NAME = "output.txt";
 
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) {
 
-        Scanner scanner = new Scanner(new File(INPUT_FILE_NAME));
-        PrintStream output = new PrintStream(OUPUT_FILE_NAME);
+        run(DEFAULT_INPUT_FILE_NAME, DEFAULT_OUPUT_FILE_NAME);
 
-        /* Dimensions of matrices */
-        int m = scanner.nextInt();
-        int n = scanner.nextInt();
+    }
 
-        StringMatrix matrix = new StringMatrix(m,n);
+    public static void run(String inputFileName, String outputFileName) {
+        Scanner scanner = null;
+        PrintStream output = null;
 
-        /* If there is an unread line in input file, it is expected to contain new matrix for concatenation. */
-        while (scanner.hasNextLine()) {
-            matrix.readMatrix(scanner, false);
+        try {
+            scanner = new Scanner(new File(inputFileName));
+            output = new PrintStream(outputFileName);
+
+            /* Dimensions of matrices */
+            int m = scanner.nextInt();
+            int n = scanner.nextInt();
+
+            StringMatrix matrix = new StringMatrix(m,n);
+
+            /* If there is an unread line in input file, it is expected to contain new matrix for concatenation. */
+            while (scanner.hasNextLine()) {
+                matrix.readMatrix(scanner, false);
+            }
+
+            matrix.printMatrix(output);
+
+        } catch (IOException e) {
+            System.err.println("Error with opening input and output files.");
+
+        } catch (NoSuchElementException e) {
+            System.err.println("Error with reading matrix dimensions.");
+
         }
-
-        scanner.close();
-
-        matrix.printMatrix(output);
-
-        output.close();
+        finally {
+            if (scanner != null) scanner.close();
+            if (output != null) output.close();
+        }
     }
 }
