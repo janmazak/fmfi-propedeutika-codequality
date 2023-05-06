@@ -3,13 +3,9 @@ import java.io.*;
 
 public class ConcatenateMatrices {
 
-    private static final String INPUT_FILE_NAME = "vstup.txt";
-    private static final String OUPUT_FILE_NAME = "vystup.txt";
+    private static final String INPUT_FILE_NAME = "input.txt";
+    private static final String OUPUT_FILE_NAME = "output.txt";
 
-    /**
-     * @param args
-     * @throws IOException
-     */
     public static void main(String[] args) throws IOException {
 
         Scanner scanner = new Scanner(new File(INPUT_FILE_NAME));

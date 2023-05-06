@@ -1,0 +1,7 @@
+2 3
+ab cd ef
+gh ij kl
+1 2 3
+4 5 6
+AB CD EF
+GH IJ KL
