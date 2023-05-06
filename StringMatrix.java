@@ -14,9 +14,9 @@ public class StringMatrix {
     private int n;
 
     /**
-     * Implementation of the matrix as 2D array list.
+     * Implementation of the matrix as 2D array.
      */
-    private ArrayList<ArrayList<StringBuilder>> matrix;
+    private StringBuilder[][] matrix;
 
     /**
      * Constructs a matrix with empty strings.
@@ -32,13 +32,24 @@ public class StringMatrix {
         n = columns;
 
         /* Creating a matrix, which elemenets are StringBuilder objects with empty strings. */
-        matrix = new ArrayList<>(rows);
-        for (int i = 1; i <= rows; i++) {
-            ArrayList<StringBuilder> row = new ArrayList<>(columns);
-            for (int j = 1; j <= columns; j++) {
-                row.add(new StringBuilder(""));
+        matrix = new StringBuilder[rows][columns];
+        for (int i = 0; i < rows; i++) {
+            for (int j = 0; j < columns; j++) {
+                matrix[i][j] = new StringBuilder("");
             }
-            matrix.add(row);
         }        
+    }
+
+    /**
+     * Prints the matrix by elements to given stream. Each element of the matrix will be printed in seperate
+     * line together with its coordinates.
+     * @param output Stream to which the matrix will be printed.
+     */
+    public void printMatrix(PrintStream output) {
+        for (int i = 0; i < m; i++) {
+            for (int j = 0; j < n; j++) {
+                output.printf("[%d,%d]: %s\n", i, j, matrix[i][j].toString());
+            }
+        }
     }
 }
