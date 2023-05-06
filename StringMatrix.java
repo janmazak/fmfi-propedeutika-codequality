@@ -35,7 +35,7 @@ public class StringMatrix {
         matrix = new StringBuilder[rows][columns];
         for (int i = 0; i < rows; i++) {
             for (int j = 0; j < columns; j++) {
-                matrix[i][j] = new StringBuilder("");
+                matrix[i][j] = new StringBuilder();
             }
         }        
     }
@@ -50,6 +50,29 @@ public class StringMatrix {
             for (int j = 0; j < n; j++) {
                 output.printf("[%d,%d]: %s\n", i, j, matrix[i][j].toString());
             }
+        }
+    }
+
+    /**
+     * Reads string elements into matrix from given scanner. If flag @param replace is equal to true, the 
+     * old matrix will be replaced by the new matrix entirely. Otherwise, new elements will be appended to
+     * old elements (concatenation).
+     * @param scanner Scanner from which elements are read into the matrix.
+     * @param replace Flag indicating, whether the old elements should be replaced.
+     */
+    public void readMatrix(Scanner scanner, boolean replace) {
+        try {
+            for (int i = 0; i < m; i++) {
+                for (int j = 0; j < n; j++) {
+                    String str = scanner.next();
+                    if (replace) {
+                        matrix[i][j].delete(0, matrix[i][j].length());
+                    }
+                    matrix[i][j].append(str);
+                }
+            }
+        } catch (NoSuchElementException e) {
+            // TODO: handle exception, when there are not enough strings in scanner to be read into the matrix
         }
     }
 }
