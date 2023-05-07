@@ -27,8 +27,8 @@ public class ConcatenateMatrices {
 
             StringMatrix matrix = new StringMatrix(m,n);
 
-            /* If there is an unread line in input file, it is expected to contain new matrix for concatenation. */
-            while (scanner.hasNextLine()) {
+            /* If there is an unread string in input file, it is expected to contain new matrix for concatenation. */
+            while (scanner.hasNext()) {
                 matrix.readMatrix(scanner, false);
             }
 
