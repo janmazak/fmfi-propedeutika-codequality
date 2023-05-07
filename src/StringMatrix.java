@@ -72,7 +72,7 @@ public class StringMatrix {
                 }
             }
         } catch (NoSuchElementException e) {
-            // TODO: handle exception, when there are not enough strings in scanner to be read into the matrix
+            System.err.println("Not enough elements while reading matrix.");
         }
     }
 }
