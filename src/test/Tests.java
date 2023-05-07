@@ -9,10 +9,8 @@ import java.util.*;
 
 public class Tests {
 
-    // private File inputFile, outputFile;
-
-    // @Rule
-    // public TemporaryFolder folder = new TemporaryFolder();
+    @Rule
+    public TemporaryFolder folder = new TemporaryFolder();
 
     // @Before
     // public void setUp() {
@@ -32,7 +30,6 @@ public class Tests {
             {"ab","cd","ef"},
             {"gh","ij","kl"}
         };
-
         StringBuilder sb = new StringBuilder();
         for (String line[] : inputMatrix) {
             for (String element : line) {
@@ -51,6 +48,7 @@ public class Tests {
         }
     }
 
+
     @Test
     /* Tests further method readMatrix from StringMatrix class, whether it can concatenate three
      * 2x3 matrices by repeated calling. */
@@ -63,7 +61,6 @@ public class Tests {
             {"AB","CD","EF"},
             {"GH","IJ","KL"}
         };
-
         StringBuilder sb = new StringBuilder();
         for (String line[] : inputMatrices) {
             for (String element : line) {
@@ -73,7 +70,6 @@ public class Tests {
         Scanner scanner = new Scanner(sb.toString());
 
         StringMatrix matrix = new StringMatrix(2, 3);
-
         while (scanner.hasNext()) {
             matrix.readMatrix(scanner, false);
         }
@@ -82,11 +78,11 @@ public class Tests {
             {"ab1AB", "cd2CD", "ef3EF"},
             {"gh4GH", "ij5IJ", "kl6KL"}
         };
-
         for (int i = 0; i < 2; i++) {
             for (int j = 0; j < 3; j++) {
                 assertEquals(expectedMatrix[i][j], matrix.getElement(i, j));
             }
         }
     }
+    
 }

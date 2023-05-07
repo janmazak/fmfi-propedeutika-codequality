@@ -29,7 +29,7 @@ public class StringMatrix {
      */
     public StringMatrix(int rows, int columns) {
         if (!(rows > 0 && columns > 0)) {
-            throw new IllegalArgumentException("Error: Attempting to create a matrix with non-positive dimensions.");
+            throw new IllegalArgumentException("Attempting to create a matrix with non-positive dimensions.");
         }
         m = rows;
         n = columns;
@@ -74,8 +74,10 @@ public class StringMatrix {
                     matrix[i][j].append(str);
                 }
             }
-        } catch (NoSuchElementException e) {
-            System.err.println("Error: Not enough elements to be read into the matrix.");
+        }
+        catch (NoSuchElementException e) {
+            System.err.println("Error with reading elements into the matrix.");
+            throw new IllegalArgumentException("Not enough elements to be read from scanner.");
         }
     }
 

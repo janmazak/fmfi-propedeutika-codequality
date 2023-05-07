@@ -34,12 +34,15 @@ public class ConcatenateMatrices {
 
             matrix.printMatrix(output);
 
-        } catch (IOException e) {
+        }
+        catch (IOException e) {
             System.err.println("Error with opening input and output files.");
-
-        } catch (NoSuchElementException e) {
+        }
+        catch (NoSuchElementException e) {
             System.err.println("Error with reading matrix dimensions.");
-
+        }
+        catch (IllegalArgumentException e) {
+            System.err.println(e.getMessage());
         }
         finally {
             if (scanner != null) scanner.close();
