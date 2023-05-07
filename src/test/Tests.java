@@ -136,13 +136,39 @@ public class Tests {
             }
         }
         Scanner scanner = new Scanner(sb.toString());
-        File outputFile = folder.newFile( "test_output.txt" );
+        File outputFile = folder.newFile("test_output.txt");
 
         StringMatrix matrix = new StringMatrix(2, 3);
         matrix.readMatrix(scanner, false);
         matrix.printMatrix(new PrintStream(outputFile));
 
         String expected = "[0,0]: ab\n[0,1]: cd\n[0,2]: ef\n[1,0]: gh\n[1,1]: ij\n[1,2]: kl\n";
+        String result = Files.readString(outputFile.toPath());
+        assertEquals(expected, result);
+    }
+
+    @Test
+    public void integrationTest() throws IOException {
+        /* Integration test for concatenate method in ConcatenateMatrices class. */
+        String input[] = {
+            "2 3",
+            "ab cd ef",
+            "gh ij kl",
+            "1 2 3",
+            "4 5 6",
+            "AB CD EF",
+            "GH IJ KL"
+        };
+
+        File inputFile = folder.newFile("test_input.txt");
+        File outputFile = folder.newFile("test_output.txt");
+        PrintStream ps = new PrintStream(inputFile);
+        for (String line : input) ps.println(line);
+        ps.close();
+
+        ConcatenateMatrices.concatenate(inputFile.getAbsolutePath(), outputFile.getAbsolutePath());
+
+        String expected = "[0,0]: ab1AB\n[0,1]: cd2CD\n[0,2]: ef3EF\n[1,0]: gh4GH\n[1,1]: ij5IJ\n[1,2]: kl6KL\n";
         String result = Files.readString(outputFile.toPath());
         assertEquals(expected, result);
     }
