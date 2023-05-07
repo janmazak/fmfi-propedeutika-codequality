@@ -1,6 +1,10 @@
+package main;
 import java.util.*;
 import java.io.*;
 
+/**
+ * Class representing a modifiable matrix, which elements are strings.
+ */
 public class StringMatrix {
     
     /**
@@ -19,15 +23,14 @@ public class StringMatrix {
     private StringBuilder[][] matrix;
 
     /**
-     * Constructs a matrix with empty strings.
+     * Constructs a matrix with given dimensions and with empty strings as elements.
      * @param rows Number of rows.
      * @param columns Number of columns.
      */
     public StringMatrix(int rows, int columns) {
         if (!(rows > 0 && columns > 0)) {
-            throw new IllegalArgumentException("Attempting to create a matrix with non-positive dimensions.");
+            throw new IllegalArgumentException("Error: Attempting to create a matrix with non-positive dimensions.");
         }
-
         m = rows;
         n = columns;
 
@@ -54,7 +57,7 @@ public class StringMatrix {
     }
 
     /**
-     * Reads string elements into matrix from given scanner. If flag @param replace is equal to true, the 
+     * Reads string elements into the matrix from given Scanner. If flag @param replace is equal to true, the 
      * old matrix will be replaced by the new matrix entirely. Otherwise, new elements will be appended to
      * old elements (concatenation).
      * @param scanner Scanner from which elements are read into the matrix.
@@ -72,7 +75,7 @@ public class StringMatrix {
                 }
             }
         } catch (NoSuchElementException e) {
-            System.err.println("Not enough elements while reading matrix.");
+            System.err.println("Error: Not enough elements to be read into the matrix.");
         }
     }
 }

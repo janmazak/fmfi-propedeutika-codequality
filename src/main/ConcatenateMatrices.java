@@ -1,3 +1,4 @@
+package main;
 import java.util.*;
 import java.io.*;
 
@@ -8,11 +9,11 @@ public class ConcatenateMatrices {
 
     public static void main(String[] args) {
 
-        run(DEFAULT_INPUT_FILE_NAME, DEFAULT_OUPUT_FILE_NAME);
+        concatenate(DEFAULT_INPUT_FILE_NAME, DEFAULT_OUPUT_FILE_NAME);
 
     }
 
-    public static void run(String inputFileName, String outputFileName) {
+    public static void concatenate(String inputFileName, String outputFileName) {
         Scanner scanner = null;
         PrintStream output = null;
 
