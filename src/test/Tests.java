@@ -3,8 +3,11 @@ import org.junit.*;
 import org.junit.rules.TemporaryFolder;
 
 import main.ConcatenateMatrices;
+import main.StringMatrix;
 
 import java.io.*;
+import java.util.Arrays;
+import java.util.Scanner;
 
 import static org.junit.Assert.*;
 
@@ -30,13 +33,24 @@ public class Tests {
     }
 
     @Test
-    public void test01() throws IOException {
+    public void shouldReadMatrixCorrectly() {
+        String inputMatrix[][] = { {"a","b","c"}, {"k","l","m"}, {"x","y","z"} };
 
-        // ConcatenateMatrices.concatenate(inputFile.getAbsolutePath(), outputFile.getAbsolutePath());
+        StringBuilder sb = new StringBuilder();
+        for (String line[] : inputMatrix) {
+            for (String element : line) {
+                sb.append(element + " ");
+            }
+        }
+        Scanner scanner = new Scanner(sb.toString());
 
-        // assertNotNull(expected);
-        // assertNotNull(result);
-        // assertEquals(expected, result);
+        StringMatrix matrix = new StringMatrix(3, 3);
+        matrix.readMatrix(scanner, false);
+
+        for (int i = 0; i < 3; i++) {
+            for (int j = 0; j < 3; j++) {
+                assertEquals(inputMatrix[i][j], matrix.getElement(i, j));
+            }
+        }
     }
-
 }
