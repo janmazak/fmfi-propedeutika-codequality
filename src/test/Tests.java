@@ -24,8 +24,8 @@ public class Tests {
     // }
 
     @Test
-    /* Tests method readMatrix from StringMatrix class, whether it can read single 2x3 matrix. */
     public void shouldReadMatrixCorrectly() {
+        /* Tests whether method readMatrix from StringMatrix class can read single 2x3 matrix. */
         String inputMatrix[][] = {
             {"ab","cd","ef"},
             {"gh","ij","kl"}
@@ -50,9 +50,9 @@ public class Tests {
 
 
     @Test
-    /* Tests further method readMatrix from StringMatrix class, whether it can concatenate three
-     * 2x3 matrices by repeated calling. */
     public void shoulConcatenateMatrixCorrectly() {
+        /* Tests whether method readMatrix from StringMatrix class can concatenate three
+         * 2x3 matrices by repeated calling. */
         String inputMatrices[][] = {
             {"ab","cd","ef"},
             {"gh","ij","kl"},
@@ -85,4 +85,14 @@ public class Tests {
         }
     }
     
+
+    @Test(expected = IllegalArgumentException.class)
+    public void shouldThrowExcpetionWhenReadingWrongMatrix() {
+        /* Tests whether method readMatrix from StringMatrix class throws exception when there
+         * is ot enough elements to be read. */
+        Scanner scanner = new Scanner("1 2 3 4");
+
+        StringMatrix matrix = new StringMatrix(3, 3);
+        matrix.readMatrix(scanner, false);
+    }
 }
