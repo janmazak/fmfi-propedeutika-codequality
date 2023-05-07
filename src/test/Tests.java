@@ -5,23 +5,13 @@ import static org.junit.Assert.*;
 
 import main.*;
 import java.io.*;
+import java.nio.file.Files;
 import java.util.*;
 
 public class Tests {
 
     @Rule
     public TemporaryFolder folder = new TemporaryFolder();
-
-    // @Before
-    // public void setUp() {
-    //     try {
-    //         inputFile = folder.newFile( "test_input.txt" );
-    //         outputFile = folder.newFile( "test_output.txt" );
-    //     }
-    //     catch(IOException e) {
-    //         System.err.println("Error creating temporary test file.");
-    //     }
-    // }
 
     @Test
     public void readSingleMatrixCorrectly() {
@@ -130,5 +120,30 @@ public class Tests {
                 assertEquals(expectedMatrix[i][j], matrix.getElement(i, j));
             }
         }
+    }
+
+    @Test
+    public void printMatrixCorrectly() throws IOException {
+        /* Tests whether method printMatrix from StringMatrix class prints matrix as expected. */
+        String inputMatrix[][] = {
+            {"ab","cd","ef"},
+            {"gh","ij","kl"}
+        };
+        StringBuilder sb = new StringBuilder();
+        for (String line[] : inputMatrix) {
+            for (String element : line) {
+                sb.append(element + " ");
+            }
+        }
+        Scanner scanner = new Scanner(sb.toString());
+        File outputFile = folder.newFile( "test_output.txt" );
+
+        StringMatrix matrix = new StringMatrix(2, 3);
+        matrix.readMatrix(scanner, false);
+        matrix.printMatrix(new PrintStream(outputFile));
+
+        String expected = "[0,0]: ab\n[0,1]: cd\n[0,2]: ef\n[1,0]: gh\n[1,1]: ij\n[1,2]: kl\n";
+        String result = Files.readString(outputFile.toPath());
+        assertEquals(expected, result);
     }
 }
