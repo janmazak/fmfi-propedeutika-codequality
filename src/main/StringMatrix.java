@@ -78,4 +78,18 @@ public class StringMatrix {
             System.err.println("Error: Not enough elements to be read into the matrix.");
         }
     }
+
+    /**
+     * Returns element as String at given position in the matrix.
+     * @param row Row of the matrix (numbered from 0).
+     * @param column Column of the matrix (numbered from 0).
+     * @return String representation of element in the matrix at given position.
+     */
+    public String getElement(int row, int column) {
+        if (!(row >= 0 && column >= 0 && row < m && column < n)) {
+            throw new IllegalArgumentException("Position is out of range.");
+        }
+        return matrix[row][column].toString();
+    }
+
 }
