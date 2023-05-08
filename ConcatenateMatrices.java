@@ -1,39 +1,92 @@
 import java.util.*;
-import java.io.*;
 
 public class ConcatenateMatrices {
 
-    public static void main(String[] args) throws IOException {
-        Scanner scanner = new Scanner(new File("vstup.txt"));
-        PrintStream output = new PrintStream("vystup.txt");
-        String vstup = scanner.nextLine(); //prvy riadok (velmi pravdepodobne ide nakodit lahsie)
-        String[] rozmery = vstup.split(" ");
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        //test1();
+        //test2();
+        //test3();
+
+        System.out.print("Zadajte počet riadkov a stĺpcov matice oddelené medzerou: ");
+        String[] rozmery = scanner.nextLine().split(" ");
         int m = Integer.parseInt(rozmery[0]);
         int n = Integer.parseInt(rozmery[1]);
 
-        String[][] matrix = new String[m][]; //matica a jej vynulovanie
-        for (int k = 0; k < m; k++) {
-            matrix[k] = new String[n];
-        }
+        Matrix matrix = new Matrix(m, n);
+        matrix.fillMatrix(scanner);
+
+        matrix.printMatrix();
+
+        scanner.close();
+    }
+
+    // Test method for a static input matrix
+    private static void test1() {
+        String[][] matrixData = {{"12", "34", "56"}, {"78", "90", "12"}};
+        Matrix matrix = new Matrix(matrixData);
+        matrix.printMatrix();
+    }
+
+    // Test method for a static input matrix
+    private static void test2() {
+        String[][] matrixData = {{"1", "2", "3"}, {"4", "5", "6"}, {"7", "8", "9"}};
+        Matrix matrix = new Matrix(matrixData);
+        matrix.printMatrix();
+    }
+
+    // Test method for a static input matrix
+    private static void test3() {
+        String[][] matrixData = {{"12", "34", "56"}, {"78", "90", "12"}, {"34", "56", "78"}};
+        Matrix matrix = new Matrix(matrixData);
+        matrix.printMatrix();
+    }
+}
+
+class Matrix {
+    private String[][] matrix;
+
+    public Matrix(int m, int n) {
+        matrix = new String[m][n];
         for (int i = 0; i < m; i++) {
             for (int j = 0; j < n; j++) {
                 matrix[i][j] = "";
             }
         }
-        while (scanner.hasNextLine()) { //cita pokial nenarazi na koniec (neexistujuci prvy riadok matice)
-            for (int i = 0; i < m; i++) { //ak je dalsi riadok, tak urcite bude m-riadkov matice
-                String riadok = scanner.nextLine(); //jeden riadok matice
-                String[] prvky = riadok.split(" "); //rozdelenie riadku na prvky (stlpce)
-                for (int j = 0; j < n; j++) { //prvky_length = n
-                    matrix[i][j] += prvky[j]; //pricitanie do vyslednej matice
-                }
-            }
+    }
+
+    public Matrix(String[][] matrixData) {
+        int m = matrixData.length;
+        int n = matrixData[0].length;
+        matrix = new String[m][n];
+        for (int i = 0; i < m; i++) {
+            System.arraycopy(matrixData[i], 0, matrix[i], 0, n);
         }
-        for (int i = 0; i < m; i++) { //formatovany vystup vyslednej matice
+    }
+
+    public void fillMatrix(Scanner scanner) {
+        System.out.println("Zadajte prvky matice oddelené medzerou:");
+
+        int m = matrix.length;
+        int n = matrix[0].length;
+
+        for (int i = 0; i < m; i++) {
+            String[] prvky = scanner.nextLine().split(" ");
             for (int j = 0; j < n; j++) {
-                output.printf("[%d,%d]: %s\n", i, j, matrix[i][j]);
+                matrix[i][j] += prvky[j];
             }
         }
-        scanner.close();
+    }
+
+    public void printMatrix() {
+        int m = matrix.length;
+        int n = matrix[0].length;
+
+        for (int i = 0; i < m; i++) {
+            for (int j = 0; j < n; j++) {
+                System.out.printf("[%d,%d]: %s\n", i, j, matrix[i][j]);
+            }
+        }
     }
 }
