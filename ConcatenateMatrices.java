@@ -8,33 +8,64 @@ public class ConcatenateMatrices {
         //test1();
         //test2();
         //test3();
-        
+
         System.out.print("Zadajte počet riadkov a stĺpcov matice oddelené medzerou: ");
         String[] rozmery = scanner.nextLine().split(" ");
         int m = Integer.parseInt(rozmery[0]);
         int n = Integer.parseInt(rozmery[1]);
 
-        String[][] matrix = createMatrix(m, n);
-        fillMatrix(matrix, scanner);
+        Matrix matrix = new Matrix(m, n);
+        matrix.fillMatrix(scanner);
 
-        printMatrix(matrix);
+        matrix.printMatrix();
 
         scanner.close();
     }
 
-    // Creates a matrix of the given dimensions
-    private static String[][] createMatrix(int m, int n) {
-        String[][] matrix = new String[m][n];
+    // Test method for a static input matrix
+    private static void test1() {
+        String[][] matrixData = {{"12", "34", "56"}, {"78", "90", "12"}};
+        Matrix matrix = new Matrix(matrixData);
+        matrix.printMatrix();
+    }
+
+    // Test method for a static input matrix
+    private static void test2() {
+        String[][] matrixData = {{"1", "2", "3"}, {"4", "5", "6"}, {"7", "8", "9"}};
+        Matrix matrix = new Matrix(matrixData);
+        matrix.printMatrix();
+    }
+
+    // Test method for a static input matrix
+    private static void test3() {
+        String[][] matrixData = {{"12", "34", "56"}, {"78", "90", "12"}, {"34", "56", "78"}};
+        Matrix matrix = new Matrix(matrixData);
+        matrix.printMatrix();
+    }
+}
+
+class Matrix {
+    private String[][] matrix;
+
+    public Matrix(int m, int n) {
+        matrix = new String[m][n];
         for (int i = 0; i < m; i++) {
             for (int j = 0; j < n; j++) {
                 matrix[i][j] = "";
             }
         }
-        return matrix;
     }
 
-    // Fills the matrix by concatenating rows from the user input
-    private static void fillMatrix(String[][] matrix, Scanner scanner) {
+    public Matrix(String[][] matrixData) {
+        int m = matrixData.length;
+        int n = matrixData[0].length;
+        matrix = new String[m][n];
+        for (int i = 0; i < m; i++) {
+            System.arraycopy(matrixData[i], 0, matrix[i], 0, n);
+        }
+    }
+
+    public void fillMatrix(Scanner scanner) {
         System.out.println("Zadajte prvky matice oddelené medzerou:");
 
         int m = matrix.length;
@@ -48,8 +79,7 @@ public class ConcatenateMatrices {
         }
     }
 
-    // Prints the matrix to the console in a formatted way
-    private static void printMatrix(String[][] matrix) {
+    public void printMatrix() {
         int m = matrix.length;
         int n = matrix[0].length;
 
@@ -59,23 +89,4 @@ public class ConcatenateMatrices {
             }
         }
     }
-
-    // Test method for a static input matrix
-    private static void test1() {
-        String[][] matrix = {{"12", "34", "56"}, {"78", "90", "12"}};
-        printMatrix(matrix);
-    }
-
-    // Test method for a static input matrix
-    private static void test2() {
-        String[][] matrix = {{"1", "2", "3"}, {"4", "5", "6"}, {"7", "8", "9"}};
-        printMatrix(matrix);
-    }
-
-    // Test method for a static input matrix
-    private static void test3() {
-        String[][] matrix = {{"12", "34", "56"}, {"78", "90", "12"}, {"34", "56", "78"}};
-        printMatrix(matrix);
-    }
 }
-
