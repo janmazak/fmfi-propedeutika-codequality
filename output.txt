@@ -4,6 +4,3 @@
 [1,0]: gh4GH
 [1,1]: ij5IJ
 [1,2]: kl6KL
-
-ab1AB cd2CD ef3EF
-gh4GH ij5IJ kl6KL

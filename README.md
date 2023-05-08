@@ -32,8 +32,15 @@ Project contains:
 
 2. Run main method in [ConcatenateMatrices.java](src/main/ConcatenateMatrices.java) class. For that, you can simply use the following command
 
-        java -cp ./out main.ConcatenateMatrices
-
-    _Note: When running on Windows, use backslash in classpath (``java -cp .\out main.ConcatenateMatrices``)._
+        java -cp out main.ConcatenateMatrices
 
 3. You should find your output in [output.txt](output.txt) file.
+
+
+## Testing
+
+In [Tests.java](src/test/Tests.java) class, there are prepared total six unit tests (they should all result as OK, one test should throw exception with message "Error with reading elements into the matrix."). You can run them with the following command:
+
+    java -cp "out;lib/junit-4.13.2.jar;lib/hamcrest-core-1.3.jar" org.junit.runner.JUnitCore test.Tests
+
+_Note: When running on Windows, use backslash in classpath (`java -cp "out;lib\junit-4.13.2.jar;lib\hamcrest-core-1.3.jar" org.junit.runner.JUnitCore test.Tests`)._
