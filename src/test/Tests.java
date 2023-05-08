@@ -141,7 +141,7 @@ public class Tests {
 
         StringMatrix matrix = new StringMatrix(2, 3);
         matrix.readMatrix(scanner, false);
-        matrix.printMatrix(new PrintStream(outputFile));
+        matrix.printMatrixElements(new PrintStream(outputFile));
 
         String expected = "[0,0]: ab\n[0,1]: cd\n[0,2]: ef\n[1,0]: gh\n[1,1]: ij\n[1,2]: kl\n";
         String result = Files.readString(outputFile.toPath());

@@ -45,19 +45,6 @@ public class StringMatrix {
     }
 
     /**
-     * Prints the matrix by elements to given stream. Each element of the matrix will be printed in seperate
-     * line together with its coordinates.
-     * @param output Stream to which the matrix will be printed.
-     */
-    public void printMatrix(PrintStream output) {
-        for (int i = 0; i < m; i++) {
-            for (int j = 0; j < n; j++) {
-                output.printf("[%d,%d]: %s\n", i, j, matrix[i][j].toString());
-            }
-        }
-    }
-
-    /**
      * Reads string elements into the matrix from given Scanner. If flag @param replace is equal to true, the 
      * old matrix will be replaced by the new matrix entirely. Otherwise, new elements will be appended to
      * old elements (concatenation).
@@ -78,7 +65,7 @@ public class StringMatrix {
         }
         catch (NoSuchElementException e) {
             System.err.println("Error with reading elements into the matrix.");
-            throw new IllegalArgumentException("Not enough elements to be read from scanner.");
+            throw new IllegalArgumentException("Not enough elements to be read from the input.");
         }
     }
 
@@ -95,4 +82,24 @@ public class StringMatrix {
         return matrix[row][column].toString();
     }
 
+    /**
+     * Prints the matrix by elements to given stream. Each element of the matrix will be printed in seperate
+     * line together with its coordinates.
+     * @param stream Stream to which the matrix will be printed.
+     */
+    public void printMatrixElements(PrintStream stream) {
+        for (int i = 0; i < m; i++) {
+            for (int j = 0; j < n; j++) {
+                stream.printf("[%d,%d]: %s\n", i, j, matrix[i][j].toString());
+            }
+        }
+    }
+
+    /**
+     * Prints the matrix in a grid.
+     * @param stream Stream to which the matrix will be printed.
+     */
+    public void printMatrix(PrintStream stream) {
+        stream.println(Arrays.deepToString(matrix).replace("], ", "\n").replaceAll("[,\\[\\]]",""));
+    }
 }

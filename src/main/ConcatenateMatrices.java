@@ -33,7 +33,9 @@ public class ConcatenateMatrices {
                 matrix.readMatrix(scanner, false);
             }
 
-            matrix.printMatrix(output);
+            matrix.printMatrixElements(output);
+            // output.println();
+            // matrix.printMatrix(output);
 
         }
         catch (IOException e) {
