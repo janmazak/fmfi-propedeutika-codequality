@@ -19,15 +19,11 @@ public class ConcatenateMatrices {
         int numRows = Integer.parseInt(dimensions[0]);
         int numCols = Integer.parseInt(dimensions[1]);
 
-        String[][] matrix = new String[numRows][]; //matica a jej vynulovanie
-        for (int k = 0; k < numRows; k++) {
-            matrix[k] = new String[numCols];
+        String[][] matrix = new String[numRows][numCols];
+        for (String[] row : matrix) {
+            Arrays.fill(row, "");
         }
-        for (int i = 0; i < numRows; i++) {
-            for (int j = 0; j < numCols; j++) {
-                matrix[i][j] = "";
-            }
-        }
+
         while (scanner.hasNextLine()) { //cita pokial nenarazi na koniec (neexistujuci prvy riadok matice)
             for (int i = 0; i < numRows; i++) { //ak je dalsi riadok, tak urcite bude m-riadkov matice
                 String riadok = scanner.nextLine(); //jeden riadok matice
