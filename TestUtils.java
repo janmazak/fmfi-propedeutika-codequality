@@ -33,4 +33,11 @@ public class TestUtils {
             file.delete();
         }
     }
+    public static void createFileIfNotExists(String filename) throws IOException {
+        File file = new File(filename);
+        if (!file.exists()) {
+            file.createNewFile();
+        }
+    }
+
 }

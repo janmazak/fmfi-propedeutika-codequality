@@ -27,6 +27,7 @@ public class ConcatenateMatricesTest {
             String actualOutput = TestUtils.getOutput("vystup.txt");
             Assert.assertEquals(expectedOutput, actualOutput);
         }
+        TestUtils.createFileIfNotExists("vstup2.txt");
     }
 
     @Test
