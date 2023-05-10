@@ -4,7 +4,7 @@ import java.io.*;
 public class ConcatenateMatrices {
 
     public static void main(String[] args) throws IOException {
-        Scanner scanner = new Scanner(new File("vstup.txt"));
+        Scanner scanner = new Scanner(new File("vstup1.txt"));
         PrintStream output = new PrintStream("vystup.txt");
         String vstup = scanner.nextLine(); //prvy riadok (velmi pravdepodobne ide nakodit lahsie)
         String[] rozmery = vstup.split(" ");
