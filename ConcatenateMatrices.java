@@ -4,8 +4,16 @@ import java.io.*;
 public class ConcatenateMatrices {
 
     public static void main(String[] args) throws IOException {
+        //checking if input file name was passed as argument
+        //if not, use default name
+        String inputFileName;
+        if (args.length < 1){
+            inputFileName = "vstup.txt";
+        } else {
+            inputFileName = args[0];
+        }
         //checking if input file exists
-        File inputFile = new File("vstup1.txt");
+        File inputFile = new File(inputFileName);
         if (!inputFile.exists()) {
             System.err.println("Input file does not exist");
             return;
