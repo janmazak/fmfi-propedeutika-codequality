@@ -1,39 +1,56 @@
-import java.util.*;
 import java.io.*;
+import java.util.Scanner;
 
 public class ConcatenateMatrices {
+    public static void main(String[] args) throws IOException
+    {
+        // Declare variables for matrix size
+        int rows, columns;
 
-    public static void main(String[] args) throws IOException {
-        Scanner scanner = new Scanner(new File("vstup.txt"));
-        PrintStream output = new PrintStream("vystup.txt");
-        String vstup = scanner.nextLine(); //prvy riadok (velmi pravdepodobne ide nakodit lahsie)
-        String[] rozmery = vstup.split(" ");
-        int m = Integer.parseInt(rozmery[0]);
-        int n = Integer.parseInt(rozmery[1]);
+        // Open input file for reading
+        Scanner in = new Scanner(new FileInputStream("vstup.txt"));
+        // Open output file for writing
+        PrintStream out = new PrintStream("vystup.txt");
 
-        String[][] matrix = new String[m][]; //matica a jej vynulovanie
-        for (int k = 0; k < m; k++) {
-            matrix[k] = new String[n];
+        // If the input file is empty, close the files and return
+        if(!in.hasNext()){
+            out.close();
+            in.close();
+            return;
         }
-        for (int i = 0; i < m; i++) {
-            for (int j = 0; j < n; j++) {
+
+        // Read matrix size from input file
+        rows = in.nextInt();
+        columns = in.nextInt();
+
+        // Initialize 2D string array for storing matrix elements
+        String[][] matrix = new String[rows][columns];
+        // Initialize all elements to empty string
+        for (int i = 0; i < rows; i++){
+            for (int j = 0; j < columns; j++){
                 matrix[i][j] = "";
             }
         }
-        while (scanner.hasNextLine()) { //cita pokial nenarazi na koniec (neexistujuci prvy riadok matice)
-            for (int i = 0; i < m; i++) { //ak je dalsi riadok, tak urcite bude m-riadkov matice
-                String riadok = scanner.nextLine(); //jeden riadok matice
-                String[] prvky = riadok.split(" "); //rozdelenie riadku na prvky (stlpce)
-                for (int j = 0; j < n; j++) { //prvky_length = n
-                    matrix[i][j] += prvky[j]; //pricitanie do vyslednej matice
+
+        // Read matrix elements from input file
+        while (in.hasNext()) {
+            for (int i = 0; i < rows; i++) {
+                for (int j = 0; j < columns; j++) {
+                    // Append the next element to the current element
+                    matrix[i][j] = matrix[i][j].concat(in.next());
                 }
             }
         }
-        for (int i = 0; i < m; i++) { //formatovany vystup vyslednej matice
-            for (int j = 0; j < n; j++) {
-                output.printf("[%d,%d]: %s\n", i, j, matrix[i][j]);
+
+        // Write the concatenated matrix to the output file
+        for (int i = 0; i < rows; i++){
+            for (int j = 0; j < columns; j++) {
+                out.printf("[%d,%d]: %s\n", i, j, matrix[i][j]);
             }
         }
-        scanner.close();
+
+        // Close the input and output files
+        out.close();
+        in.close();
     }
 }
